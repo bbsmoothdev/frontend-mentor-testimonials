@@ -1,0 +1,235 @@
+body {
+    background-color: hsl(210, 46%, 95%);
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+section {
+    padding: 0 1em 1em;
+    margin: 0 25px;
+}
+
+/* Style for narrow view port first (single column) */
+
+article {
+    max-width: 33.75rem;
+    margin: 0 auto;
+    align-self: stretch;
+    box-sizing: border-box;
+}
+
+article+article {
+    margin-top: 23px;
+}
+
+article>div {
+    border-radius: 10px;
+    padding: 25px 38px 20px 32px;
+}
+
+article p {
+    line-height: 1.39;
+}
+
+article header {
+    display: flex;
+    align-items: center;
+}
+
+article header img {
+    width: 2.2em;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+article header div {
+    margin-left: 15px;
+}
+
+article header h2 {
+    font-size: 1em;
+    margin: 0;
+}
+
+article header p {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 0.9em;
+}
+
+article blockquote {
+    font-weight: 600;
+    line-height: 1.23;
+    margin: 15px 0;
+    font-size: 1.5em;
+    word-spacing: 1px;
+}
+
+article>div>p {
+    padding-right: 12px;
+}
+
+article>div>p:before {
+    content: '\201C';
+    padding-right: 3px;
+}
+
+article>div>p:after {
+    content: '\201D';
+    padding-left: 3px;
+}
+
+/* color specifics */
+
+.purple {
+    background-color: hsl(263, 55%, 52%);
+    background-image: url(../images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: 88% 0;
+    background-size: calc(40px + 4.9em);
+    color: #fff;
+}
+
+.purple header img {
+    border: 2px solid #A775F1;
+}
+
+.gray {
+    background-color: hsl(217, 19%, 35%);
+    color: #fff;
+}
+
+.gray header img {
+    border: 2px solid hsl(219, 29%, 14%);
+}
+
+.white {
+    background-color: white;
+    color: #000;
+}
+
+.black {
+    background-color: hsl(219, 29%, 14%);
+    color: #fff;
+}
+
+.black header img {
+    border: 2px solid hsl(263, 55%, 52%);
+}
+
+.purple p {
+    color: #DBDBDB;
+}
+
+.gray p {
+    color: #C9C9C9;
+}
+
+.white p {
+    color: #757575;
+}
+
+.white h2,
+.white blockquote {
+    color: #555;
+}
+
+.black p {
+    color: #ABABAB;
+}
+
+
+/* Two columns */
+/* calc with mixed units does not work in media queries for any 
+   browers other than Firefox at the moment, so we'll have to 
+   settle for an approximation (using 13px as the default font size)*/
+/*@media (min-width: calc(49.75em + 80px)) {*/
+@media (min-width: 55.95em) {
+
+    section {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr [col4];
+        max-width: calc(49.75rem + 30px);
+        gap: 24px 30px;
+    }
+
+    .purple {
+        background-position: 82% 0;
+    }
+
+    article {
+        max-width: 16rem;
+    }
+
+    article:nth-child(1) {
+        grid-column-start: 1;
+        grid-column-end: col3;
+        max-width: 33.75rem;
+    }
+
+    article:nth-child(4) {
+        grid-column-start: 2;
+        grid-column-end: col4;
+        max-width: 33.75rem;
+    }
+
+    article:nth-child(5) {
+        grid-column-start: 1;
+        grid-column-end: col4;
+        max-width: 33.75rem;
+    }
+
+    article+article {
+        margin-top: 0;
+    }
+
+    article>div {
+        height: calc(100% - 48px);
+        padding-right: 34px;
+    }
+
+    article>div>p {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+}
+
+/* Three columns */
+/*@media (min-width: calc(65.75rem + 110px)) {*/
+@media (min-width: 72.625em) {
+
+    section {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr [col4] 1fr [col5];
+        grid-template-rows: [row1] auto [row2] auto [row3];
+        max-width: calc(65.75rem + 60px);
+    }
+
+    article:nth-child(2) {
+        grid-column-start: 3;
+        grid-column-end: col4;
+    }
+
+    article:nth-child(3) {
+        grid-column-start: 1;
+        grid-column-end: col2;
+    }
+
+    article:nth-child(5) {
+        grid-column-start: 4;
+        grid-column-end: col5;
+        grid-row-start: 1;
+        grid-row-end: row3;
+        max-width: 16rem;
+    }
+
+}
